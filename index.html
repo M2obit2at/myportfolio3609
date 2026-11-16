@@ -19,6 +19,14 @@
       --serif:Georgia,"Times New Roman",serif;--max:1240px;--rail:76px;
       --shadow:0 24px 70px rgba(31,38,33,.10);
     }
+   body {-webkit-user-select: none; user-select: none; }
+    input, textarea, select,
+    [contenteditable="true"] {
+       -webkit-user-select: text;
+       user-select: text;}
+    img {-webkit-user-drag: none; user-drag: none;}
+    img {-webkit-user-select: none; user-select: none;}
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth;scroll-padding-top:90px}
     body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6}
@@ -508,6 +516,44 @@
       document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));
     }
     document.getElementById("year").textContent=new Date().getFullYear();
+
+    document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+});
+
+document.addEventListener("keydown", function (e) {
+    const key = e.key.toLowerCase();
+    if (key === "f12") {
+        e.preventDefault();
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && key === "i") {
+        e.preventDefault();
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && key === "j") {
+        e.preventDefault();
+        return false;
+    }
+    if (e.ctrlKey && key === "u") {
+        e.preventDefault();
+        return false;
+    }
+    if (e.ctrlKey && key === "s") {
+        e.preventDefault();
+        return false;
+    }
+    if (e.ctrlKey && e.shiftKey && key === "c") {
+        e.preventDefault();
+        return false;
+    }
+});
+document.addEventListener("selectstart", function (e) {
+    e.preventDefault();
+});
+document.addEventListener("dragstart", function (e) {
+    e.preventDefault();
+});
   </script>
 </body>
 </html>
